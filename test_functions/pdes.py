@@ -10,21 +10,22 @@ except:
     pass
 
 class PDEVar(BaseTestProblem):
+    dim = 4
+    continuous_inds = list(range(dim))
+    _bounds = [
+            [0.1, 5.0], 
+            [0.1, 5.0], 
+            [0.01, 5.0], 
+            [0.01, 5.0],    
+        ]
+    num_objectives = 1
+
     def __init__(
         self,
         noise_std: Optional[float] = None,
         negate: bool = False,
         aggregate: bool = False
     ) -> None:
-
-        self.dim = 4
-        self._bounds = [
-            [0.1, 5.0], 
-            [0.1, 5.0], 
-            [0.01, 5.0], 
-            [0.01, 5.0],    
-        ]
-        self.num_objectives = 1
         super().__init__(
                 negate=negate, noise_std=noise_std)
 
@@ -57,7 +58,7 @@ class PDEVar(BaseTestProblem):
             return sol_tensor
 
     
-    def evaluate_true(self, X: Tensor) -> Tensor:
+    def _evaluate_true(self, X: Tensor) -> Tensor:
         # Evaluate the simulator on each of the inputs in batch
         sims = torch.stack([self.Simulator(x) for x in X]).to(X.device)
 

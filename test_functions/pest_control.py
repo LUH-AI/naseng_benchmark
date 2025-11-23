@@ -73,26 +73,25 @@ class PestControl(BaseTestProblem):
 	Pest Control Problem.
 
 	"""
+    dim = PESTCONTROL_N_STAGES
+    categorical_inds = list(range(dim))
+    _bounds = np.repeat([[0], [PESTCONTROL_N_CHOICE-1]], PESTCONTROL_N_STAGES, axis=1).T
+    num_objectives = 1
 
     def __init__(
         self,
         noise_std: Optional[float] = None,
         negate: bool = False
     ) -> None:
-        self.dim = PESTCONTROL_N_STAGES
-        self._bounds = np.repeat([[0], [5 - 1e-6]], PESTCONTROL_N_STAGES, axis=1).T
-        self.num_objectives = 1
-
         super().__init__(
             noise_std=noise_std,
             negate=negate,
         )
 
-        self.categorical_dims = np.arange(self.dim)
-
-    def evaluate_true(self, X):
+    def _evaluate_true(self, X):
         res = torch.stack([self._compute(x) for x in X]).to(X)
         # Add a small amount of noise to prevent training instabilities
+        res = res.to(dtype=torch.float32)
         res += 1e-6 * torch.randn_like(res)
         return res
 

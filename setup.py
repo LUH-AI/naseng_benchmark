@@ -4,9 +4,7 @@ from setuptools import setup, find_packages
 
 setup(name='bnn_bo',
       version='0.1',
-      packages=find_packages(include=['pybnn']),
-      # package_dir = {'pybnn': 'pybnn'},
-      # packages=['pybnn'],
+      packages=find_packages(include=['test_functions']),
       install_requires=[
             'botorch',
             'gpytorch'
