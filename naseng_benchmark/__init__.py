@@ -1,10 +1,10 @@
-from bnnbo_test_functions.distillation import KnowledgeDistillation
-from bnnbo_test_functions.lunar_lander import LunarLanderProblem
-from bnnbo_test_functions.oil_sorbent import OilSorbent, OilSorbentMixed
-from bnnbo_test_functions.optics import Optics
-from bnnbo_test_functions.pdes import PDEVar
-from bnnbo_test_functions.pest_control import PestControl
-from bnnbo_test_functions.test_functions import BnnDraw, PolyDraw
+from naseng_benchmark.distillation import KnowledgeDistillation
+from naseng_benchmark.lunar_lander import LunarLanderProblem
+from naseng_benchmark.oil_sorbent import OilSorbent, OilSorbentMixed
+from naseng_benchmark.optics import Optics
+from naseng_benchmark.pdes import PDEVar
+from naseng_benchmark.pest_control import PestControl
+from naseng_benchmark.test_functions import BnnDraw, PolyDraw
 
 __all__ = [
     "cco",
