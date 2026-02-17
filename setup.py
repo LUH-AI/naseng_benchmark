@@ -2,9 +2,9 @@
 
 from setuptools import setup, find_packages
 
-setup(name='bnn_bo',
+setup(name='naseng_benchmark',
       version='0.1',
-      packages=find_packages(include=['bnnbo_test_functions']),
+      packages=find_packages(include=['naseng_benchmark']),
       install_requires=[
             'botorch',
             'gpytorch'
